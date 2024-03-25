@@ -3,7 +3,7 @@ require "selenium-webdriver"
 require "pry"
 
 def checkStickersMostPopular()
-  elements = @driver.find_elements(:xpath, "//*[@id='box-most-popular']/div/ul/li")
+  elements = @driver.find_elements(:css, "li.product")
   for element in elements
     if element.find_elements(:css, "div.sticker").size() != 1
       puts("Sticker error in Most Popular category!")
@@ -13,7 +13,7 @@ def checkStickersMostPopular()
 end
 
 def checkStickersCampaigns()
-  elements = @driver.find_elements(:xpath, "//*[@id='box-campaigns']/div/ul/li")
+  elements = @driver.find_elements(:css, "li.product")
   for element in elements
     if element.find_elements(:css, "div.sticker").size() != 1
       puts("Sticker error in Campaigns category!")
@@ -23,7 +23,7 @@ def checkStickersCampaigns()
 end
 
 def checkStickersLatestProducts()
-  elements = @driver.find_elements(:xpath, "//*[@id='box-latest-products']/div/ul/li")
+  elements = @driver.find_elements(:css, "li.product")
   for element in elements
     if element.find_elements(:css, "div.sticker").size() != 1
       puts("Sticker error in Latest Products category!")
