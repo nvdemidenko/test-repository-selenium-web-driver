@@ -23,9 +23,11 @@ end
 def checkSortCounriesZones
   countries = @driver.find_elements(:css, "tr.row")
   countOfCountries = countries.size
-  for i in (1..countOfCountries-1)
-    if countries[i-1].find_element(:xpath, "./td[5]").attribute("textContent") > countries[i].find_element(:xpath, "./td[5]").attribute("textContent")
-      puts 'Wrong sort in countries: #{countries[i-1].find_element(:xpath, "./td[5]").attribute("textContent")}, #{countries[i].find_element(:xpath, "./td[5]").attribute("textContent")}'
+  for i in (1..countOfCountries)
+    if i < countOfCountries
+      if countries[i-1].find_element(:xpath, "./td[5]").attribute("textContent") > countries[i].find_element(:xpath, "./td[5]").attribute("textContent")
+        puts "Wrong sort in countries"
+      end
     end
     if countries[i-1].find_element(:xpath, "./td[6]").attribute("textContent").to_i > 0
       countries[i-1].find_element(:css, "a").click
@@ -33,7 +35,7 @@ def checkSortCounriesZones
       countOfZones = zones.size
       for k in (1..countOfZones-1)
         if zones[k-1].find_element(:xpath, "./td[3]").attribute("textContent") > zones[k].find_element(:xpath, "./td[3]").attribute("textContent")
-          puts 'Wrong sort in zones: #{zones[k-1].find_element(:xpath, "./td[2]").attribute("textContent")}, #{zones[k].find_element(:xpath, "./td[2]").attribute("textContent")}'
+          puts "Wrong sort in zones"
         end
       end
       @driver.find_element(:xpath, "//button[@name='cancel']").click
