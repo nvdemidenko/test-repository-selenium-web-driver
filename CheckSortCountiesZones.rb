@@ -21,8 +21,6 @@ def openMenuCoutries
 end
 
 def checkSortCounriesZones
-  massOfCounries = []
-  massOfZones = []
   countries = @driver.find_elements(:css, "tr.row")
   countOfCountries = countries.size
   for i in (1..countOfCountries-1)
