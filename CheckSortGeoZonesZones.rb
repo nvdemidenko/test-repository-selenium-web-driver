@@ -35,7 +35,7 @@ def checkSortGeoZonesZones
       zones = @driver.find_elements(:xpath, "//*[@id='table-zones']//tbody//tr[not(@class='header')][not(./td//*[@id='add_zone'])]")
       countOfZones = zones.size
       for k in (1..countOfZones-1)
-        if zones[k-1].find_element(:xpath, ".//td[3]//select//option[@selected]").text > zones[k-1].find_element(:xpath, ".//td[3]//select//option[@selected]").text
+        if zones[k-1].find_element(:xpath, ".//td[3]//select//option[@selected]").text > zones[k].find_element(:xpath, ".//td[3]//select//option[@selected]").text
            puts "Wrong sort in zones"
          end
       end
